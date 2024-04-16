@@ -1,0 +1,68 @@
+div,
+h1,
+h2,
+h3,
+p,
+img,
+ul,
+li,
+footer {
+  margin: 5px;
+  padding: 5px;
+}
+
+body {
+  background-color: #fffaf0;
+  font-family: "Kaisei Opti", serif;
+  margin-top: 100px;
+}
+
+.header,
+footer {
+  background-color: lightblue;
+  margin: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  margin: 10px;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  margin: 0 0 0 auto;
+}
+
+.header li {
+  margin: 10px;
+}
+
+#ProfileContents {
+  display: flex;
+}
+
+#ProfileLinks a {
+  margin-left: 30px;
+}
+
+img {
+  height: 300px;
+}
+
+footer {
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  /* 480px以下に適用されるCSS（スマホ用） */
+}
