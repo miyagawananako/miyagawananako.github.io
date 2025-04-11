@@ -1,3 +1,11 @@
+/* ベーススタイル */
+body {
+  background-color: #fffaf0;
+  font-family: "Kaisei Opti", serif;
+  margin-top: 100px;
+}
+
+/* 共通のマージンとパディング */
 div,
 h1,
 h2,
@@ -11,42 +19,63 @@ footer {
   padding: 5px;
 }
 
-body {
-  background-color: #fffaf0;
-  font-family: "Kaisei Opti", serif;
-  margin-top: 100px;
-}
-
+/* ヘッダーとフッター共通 */
 .header,
 footer {
   background-color: lightblue;
   margin: 0;
 }
 
+/* ヘッダー */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  min-height: 60px;
+  z-index: 1000;
+  flex-wrap: wrap;
 }
 
 .header h1 {
-  margin: 10px;
+  margin: 0;
+  font-size: 1.8em;
+  white-space: nowrap;
 }
 
 .header ul {
   list-style: none;
   display: flex;
-  margin: 0 0 0 auto;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .header li {
-  margin: 10px;
+  margin: 0;
 }
 
+.header a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.header a:hover {
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* プロフィールセクション */
 #ProfileContents {
   display: flex;
 }
@@ -59,10 +88,71 @@ img {
   height: 300px;
 }
 
+/* コンテンツリスト共通スタイル */
+#Internship ul,
+#Experience ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#Internship li,
+#Experience li {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 15px 0;
+  padding: 5px;
+}
+
+/* フッター */
 footer {
   text-align: center;
 }
 
+/* レスポンシブデザイン */
 @media screen and (max-width: 480px) {
-  /* 480px以下に適用されるCSS（スマホ用） */
+  /* ヘッダーのレスポンシブ対応 */
+  .header {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .header h1 {
+    font-size: 1.4em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .header ul {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .header li {
+    margin: 0;
+  }
+
+  .header a {
+    font-size: 0.9em;
+    padding: 4px 8px;
+  }
+
+  /* ボディのレスポンシブ対応 */
+  body {
+    margin-top: 120px;
+  }
+
+  /* プロフィールセクションのレスポンシブ対応 */
+  #ProfileContents {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+  }
 }
