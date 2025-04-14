@@ -7,23 +7,12 @@ body {
 
 /* 共通のマージンとパディング */
 div,
-h1,
 h2,
 h3,
 p,
-img,
-ul,
-li,
-footer {
+img {
   margin: 5px;
   padding: 5px;
-}
-
-/* ヘッダーとフッター共通 */
-.header,
-footer {
-  background-color: lightblue;
-  margin: 0;
 }
 
 /* ヘッダー */
@@ -32,13 +21,14 @@ footer {
   top: 0;
   left: 0;
   right: 0;
+  background-color: lightblue;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
   min-height: 60px;
   z-index: 1000;
-  flex-wrap: wrap;
+  margin: 0;
 }
 
 .header h1 {
@@ -47,20 +37,19 @@ footer {
   white-space: nowrap;
 }
 
-.header ul {
+.nav-menu {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-.header li {
+.nav-menu li {
   margin: 0;
 }
 
-.header a {
+.nav-menu a {
   text-decoration: none;
   color: #333;
   font-weight: bold;
@@ -69,23 +58,75 @@ footer {
   white-space: nowrap;
 }
 
-.header a:hover {
+.nav-menu a:hover {
   color: #000;
   background-color: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
 }
 
+/* ハンバーガーメニュー */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
 /* プロフィールセクション */
 #ProfileContents {
   display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+#ProfileLinks {
+  text-align: center;
+}
+
+#ProfileLinks img {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 15px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
 }
 
 #ProfileLinks a {
-  margin-left: 30px;
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #0066cc;
 }
 
-img {
-  height: 300px;
+#ProfileLinks a:hover {
+  text-decoration: underline;
 }
 
 /* コンテンツリスト共通スタイル */
@@ -104,45 +145,112 @@ img {
   padding: 5px;
 }
 
+#Internship li p,
+#Experience li p {
+  font-size: 0.85em;
+  font-weight: normal;
+  margin: 5px 0;
+  color: #333;
+}
+
 /* フッター */
 footer {
+  background-color: lightblue;
+  margin: 0;
   text-align: center;
+  padding: 10px;
 }
 
 /* レスポンシブデザイン */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 1024px) {
   /* ヘッダーのレスポンシブ対応 */
   .header {
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
+    padding: 10px 15px;
   }
 
   .header h1 {
     font-size: 1.4em;
-    text-align: center;
-    width: 100%;
   }
 
-  .header ul {
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
-    padding: 0;
+  .hamburger {
+    display: block;
   }
 
-  .header li {
-    margin: 0;
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: lightblue;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
   }
 
-  .header a {
-    font-size: 0.9em;
-    padding: 4px 8px;
+  .nav-menu.active {
+    display: flex;
   }
 
   /* ボディのレスポンシブ対応 */
   body {
-    margin-top: 120px;
+    margin-top: 80px;
+  }
+
+  /* プロフィールセクションのレスポンシブ対応 */
+  #ProfileContents {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* ヘッダーのレスポンシブ対応 */
+  .header {
+    padding: 10px 15px;
+  }
+
+  .header h1 {
+    font-size: 1.4em;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: lightblue;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  /* ボディのレスポンシブ対応 */
+  body {
+    margin-top: 80px;
   }
 
   /* プロフィールセクションのレスポンシブ対応 */
@@ -151,8 +259,11 @@ footer {
     align-items: center;
   }
 
-  img {
-    height: auto;
+  #ProfileLinks img {
+    width: 200px;
+    height: 200px;
     max-width: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 }
